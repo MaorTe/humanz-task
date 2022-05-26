@@ -6,7 +6,6 @@ require('./db/mongoose');
 const User = require('./db/models/User');
 const userValidator = require('./utils/userValidation');
 
-// #insert 50 users to db
 // const insertUsersToDB = require('./data/usersdata');
 // insertUsersToDB();
 
@@ -64,11 +63,6 @@ app.post('/users/delete', async function (req, res) {
 		res.status(500).send();
 	}
 });
-url = process.env.ATLAS;
-// console.log(url);
-
-url = require('./db/atlas');
-console.log(url);
 
 app.listen(port, () => {
 	console.log(`Listening on ${port}`);
