@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 require('./db/mongoose');
-const User = require('./db/model/User');
+const User = require('./db/models/User');
 const userValidator = require('./utils/userValidation');
 
 // #insert 50 users to db
@@ -10,10 +10,7 @@ const userValidator = require('./utils/userValidation');
 // insertUsersToDB();
 
 const app = express();
-const port = process.env.PORT || 4000;
-// const proxy = require('express-http-proxy');
-// const app = require('express')();
-// app.use('/proxy', proxy('http://ip-api.com/'));
+const port = process.env.PORT || 3002;
 
 app.use(
 	cors({
@@ -31,8 +28,6 @@ app.use(
 );
 
 app.use(express.json());
-
-// app.use(cors(corsOptions));
 // app.use(cors());
 
 app.get('/users', async function (req, res) {

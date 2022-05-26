@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
-const api = axios.create({ baseURL: "http://localhost:4000" });
+const api = axios.create({ baseURL: '/' });
 
-export const getUsers = (searchTerm = "", category = "") => {
-	if (!searchTerm) return api.get("/users").then((res) => res.data);
+export const getUsers = (searchTerm = '', category = '') => {
+	if (!searchTerm) return api.get('/users').then((res) => res.data);
 
 	return api
 		.get(`users?term=${searchTerm}&category=${category}`)
@@ -11,7 +11,7 @@ export const getUsers = (searchTerm = "", category = "") => {
 };
 
 export const deleteUsers = (ids) =>
-	api.post("/users/delete", { ids }).then((res) => res.data);
+	api.post('/users/delete', { ids }).then((res) => res.data);
 
 export const addUser = (user) =>
-	api.post("/users", { user }).then((res) => res.data);
+	api.post('/users', { user }).then((res) => res.data);

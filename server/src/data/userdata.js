@@ -1,5 +1,5 @@
 const csvData = require('./csvdata');
-const User = require('../db/model/User');
+const User = require('../db/models/User');
 
 function csvDataToObjectArray() {
 	const arr = csvData.replaceAll('"', '').split('\n');

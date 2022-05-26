@@ -14,8 +14,8 @@ function UsersPage() {
 	const { users, handleCreateUser, handleFilter, handleDelete } = useUsers();
 
 	React.useEffect(() => {
-		const usersArr = users.filter((user, index) => index < 5);
-		const usersIP = usersArr.map((user) => user.IP);
+		const usersArr = users?.filter((user, index) => index < 5);
+		const usersIP = usersArr?.map((user) => user.IP);
 
 		// getBatchGeolocation(usersIP)
 		// 	.then((data) => setGeolocation([...data]))

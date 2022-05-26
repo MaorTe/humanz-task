@@ -39,9 +39,11 @@ function UsersProvider(props) {
 		[users],
 	);
 	const handleFilter = React.useCallback(async (searchTerm, category) => {
-		setUsers()
-			.then((searchTerm, categorys) => getUsers(searchTerm, category))
-			.catch((e) => console.log(e));
+		try {
+			setUsers(await getUsers(searchTerm, category));
+		} catch (e) {
+			console.log(e);
+		}
 	}, []);
 
 	const value = React.useMemo(
