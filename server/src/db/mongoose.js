@@ -9,7 +9,7 @@ if (process.env.NODE_ENV) {
 //
 mongoose.connect(url, {
 	useNewUrlParser: true,
-	useCreateIndex: true,
-	useFindAndModify: false,
+	// useCreateIndex: true,
+	// useFindAndModify: false,
 	useUnifiedTopology: true,
 });
