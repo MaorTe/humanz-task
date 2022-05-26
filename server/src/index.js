@@ -18,10 +18,9 @@ app.use(
 		origin: [
 			'http://localhost',
 			'http://localhost:3000',
-			'http://localhost:5000',
-			'http://localhost:5000',
+			'http://localhost:3002',
 			'http://0.0.0.0:3000',
-			'http://0.0.0.0:5000',
+			'http://0.0.0.0:3002',
 		],
 		methods: ['GET', 'POST'],
 		credentials: true,
