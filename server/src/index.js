@@ -32,12 +32,10 @@ app.use(express.json());
 
 app.get('/users', async function (req, res) {
 	try {
-		console.log(req.query);
 		if (Object.keys(req.query).length === 0) res.send(await User.find({}));
 		const { category, term } = req.query;
 		const filter = {};
 		filter[category] = { $regex: term, $options: 'i' };
-		console.log(filter);
 		return res.send(await User.find(filter));
 	} catch (e) {
 		return res.status(500).send();
@@ -66,6 +64,11 @@ app.post('/users/delete', async function (req, res) {
 		res.status(500).send();
 	}
 });
+url = process.env.ATLAS;
+// console.log(url);
+
+url = require('./db/atlas');
+console.log(url);
 
 app.listen(port, () => {
 	console.log(`Listening on ${port}`);
