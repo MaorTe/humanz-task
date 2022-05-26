@@ -1,3 +1,3 @@
-// const url =
-// 	'mongodb+srv://maor12:LaiomlV6YXcgHeGW@cluster0.yrez4.mongodb.net/fullstack-final?retryWrites=true&w=majority';
-// module.exports = url;
+const url =
+	'mongodb+srv://maor1:m190998@cluster0humanz.6vrlw.mongodb.net/?retryWrites=true&w=majority';
+module.exports = url;
