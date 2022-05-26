@@ -13,22 +13,22 @@ const userValidator = require('./utils/userValidation');
 const app = express();
 const port = process.env.PORT || 3002;
 
-app.use(
-	cors({
-		origin: [
-			'http://localhost',
-			'http://localhost:3000',
-			'http://localhost:3002',
-			'http://0.0.0.0:3000',
-			'http://0.0.0.0:3002',
-		],
-		methods: ['GET', 'POST'],
-		credentials: true,
-	}),
-);
+// app.use(
+// 	cors({
+// 		origin: [
+// 			'http://localhost',
+// 			'http://localhost:3000',
+// 			'http://localhost:3002',
+// 			'http://0.0.0.0:3000',
+// 			'http://0.0.0.0:3002',
+// 		],
+// 		methods: ['GET', 'POST'],
+// 		credentials: true,
+// 	}),
+// );
 
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
 app.get('/users', async function (req, res) {
 	try {
