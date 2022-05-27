@@ -6,25 +6,8 @@ require('./db/mongoose');
 const User = require('./db/models/User');
 const userValidator = require('./utils/userValidation');
 
-// const insertUsersToDB = require('./data/usersdata');
-// insertUsersToDB();
-
 const app = express();
 const port = process.env.PORT || 3002;
-
-// app.use(
-// 	cors({
-// 		origin: [
-// 			'http://localhost',
-// 			'http://localhost:3000',
-// 			'http://localhost:3002',
-// 			'http://0.0.0.0:3000',
-// 			'http://0.0.0.0:3002',
-// 		],
-// 		methods: ['GET', 'POST'],
-// 		credentials: true,
-// 	}),
-// );
 
 app.use(express.json());
 app.use(cors());

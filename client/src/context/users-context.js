@@ -1,10 +1,10 @@
 import React from 'react';
 import { getUsers, deleteUsers, addUser } from '../api/usersApi';
+import { getGeolocation } from './../api/geoLocationApi';
 const UsersContext = React.createContext();
 
 function UsersProvider(props) {
 	const [users, setUsers] = React.useState([]);
-	const [newUserIP, setNewUserIP] = React.useState(null);
 
 	React.useEffect(() => {
 		getUsers()
@@ -29,9 +29,15 @@ function UsersProvider(props) {
 	const handleCreateUser = React.useCallback(
 		async (user) => {
 			try {
-				const newUser = await addUser(user);
-				setNewUserIP(newUser?.IP);
-				setUsers([...users, user]);
+				const geoInfo = await getGeolocation(user.IP);
+				console.log(geoInfo);
+				const newUser = {
+					...user,
+					GeoInfo: `${geoInfo.country}, ${geoInfo.city}`,
+				};
+				await addUser(newUser);
+				console.log(newUser);
+				setUsers([...users, newUser]);
 			} catch (e) {
 				console.log(e);
 			}
@@ -52,9 +58,8 @@ function UsersProvider(props) {
 			handleDelete,
 			handleCreateUser,
 			handleFilter,
-			newUserIP,
 		}),
-		[users, handleDelete, handleCreateUser, handleFilter, newUserIP],
+		[users, handleDelete, handleCreateUser, handleFilter],
 	);
 
 	return <UsersContext.Provider value={value} {...props} />;

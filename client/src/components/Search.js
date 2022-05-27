@@ -32,10 +32,11 @@ const Search = ({ handleFilter }) => {
 				display: 'inline-flex',
 				alignItems: 'center',
 				mt: '15px',
+				marginBottom: '40px',
 			}}>
 			<Box>
 				<TextField
-					sx={{ minWidth: 120 }}
+					sx={{ minWidth: 120, width: '350px' }}
 					label="Search"
 					value={inputValue}
 					onChange={(e) => setInputValue(e.target.value)}
