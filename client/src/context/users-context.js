@@ -5,6 +5,7 @@ const UsersContext = React.createContext();
 
 function UsersProvider(props) {
 	const [users, setUsers] = React.useState([]);
+	const [isLoading, setIsLoading] = React.useState(false);
 
 	React.useEffect(() => {
 		getUsers()
@@ -46,20 +47,24 @@ function UsersProvider(props) {
 	);
 	const handleFilter = React.useCallback(async (searchTerm, category) => {
 		try {
-			setUsers(await getUsers(searchTerm, category));
+			setIsLoading(true);
+			const filteredUsers = await getUsers(searchTerm, category);
+			setUsers(filteredUsers);
+			setIsLoading(false);
 		} catch (e) {
 			console.log(e);
 		}
 	}, []);
-
+	
 	const value = React.useMemo(
 		() => ({
 			users,
 			handleDelete,
 			handleCreateUser,
 			handleFilter,
+			isLoading,
 		}),
-		[users, handleDelete, handleCreateUser, handleFilter],
+		[users, handleDelete, handleCreateUser, handleFilter, isLoading],
 	);
 
 	return <UsersContext.Provider value={value} {...props} />;
